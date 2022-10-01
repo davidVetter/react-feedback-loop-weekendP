@@ -31,6 +31,8 @@ const feedbackReducer = (state = feedback, action) => {
         let newFeeling = {...state}
         newFeeling.comments = action.payload
         return newFeeling;
+    } else if (action.type === 'CLEAR_FEEDBACK') {
+        return feedback;
     }
     return state;
 }

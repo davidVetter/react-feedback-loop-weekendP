@@ -3,15 +3,21 @@ import {useDispatch} from 'react-redux';
 
 function Feeling() {
     const [feeling, setFeeling] = useState('');
+    const [notNumber, setNotNumber] = useState(false);
     const dispatch = useDispatch();
 
     const handleNext = (e) => {
         e.preventDefault();
+        if (Number(feeling) < 6 && Number(feeling) > 0) {
         dispatch({
             type: 'ADD_FEELING',
             payload: feeling
         });
         setFeeling('');
+        setNotNumber(false);
+        } else {
+            setNotNumber(true);
+        }
     }
 
     return (
@@ -25,6 +31,7 @@ function Feeling() {
                     type="text" />
             </label>
             <button onClick={handleNext}>Next</button>
+            {notNumber && <p>Please use a number between 1-5</p>}
         </div>
     )
 }

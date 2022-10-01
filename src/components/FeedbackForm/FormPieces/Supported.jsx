@@ -3,15 +3,21 @@ import {useDispatch} from 'react-redux';
 
 function Supported() {
     const [support, setSupport] = useState('');
+    const [notNumber, setNotNumber] = useState(false);
     const dispatch = useDispatch();
 
     const handleNext = (e) => {
         e.preventDefault();
+        if (Number(support) < 6 && Number(support) > 0) {
         dispatch({
             type: 'ADD_SUPPORT',
             payload: support
         });
         setSupport('');
+        setNotNumber(false);
+        } else {
+            setNotNumber(true);
+        }
     }
 
     return (
@@ -25,6 +31,7 @@ function Supported() {
                     type="text" />
             </label>
             <button onClick={handleNext}>Next</button>
+            {notNumber && <p>Please use a number between 1-5</p>}
         </div>
     )
 }
