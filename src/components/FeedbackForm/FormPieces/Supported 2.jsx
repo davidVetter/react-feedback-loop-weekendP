@@ -11,7 +11,6 @@ function Supported() {
             type: 'ADD_SUPPORT',
             payload: support
         });
-        setSupport('');
     }
 
     return (

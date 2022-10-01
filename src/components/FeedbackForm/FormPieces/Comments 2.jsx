@@ -11,7 +11,6 @@ function Comments() {
             type: 'ADD_COMMENTS',
             payload: comments
         });
-        setComments('');
     }
 
     return (

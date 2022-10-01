@@ -5,13 +5,11 @@ function Feeling() {
     const [feeling, setFeeling] = useState('');
     const dispatch = useDispatch();
 
-    const handleNext = (e) => {
-        e.preventDefault();
+    const handleNext = () => {
         dispatch({
             type: 'ADD_FEELING',
             payload: feeling
         });
-        setFeeling('');
     }
 
     return (
