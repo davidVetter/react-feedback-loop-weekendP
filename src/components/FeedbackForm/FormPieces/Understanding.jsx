@@ -8,7 +8,7 @@ function Understanding() {
 
     const handleNext = (e) => {
         e.preventDefault();
-        if (Number(understanding) < 6 && Number(understanding) >= 0) {
+        if (Number(understanding) < 6 && Number(understanding) > 0) {
         dispatch({
             type: 'ADD_UNDERSTANDING',
             payload: understanding
@@ -32,7 +32,7 @@ function Understanding() {
                     type="text" />
             </label>
             <button onClick={handleNext}>Next</button>
-            {notNumber && <p>Please use a number between 0-5</p>}
+            {notNumber && <p>Please use a number between 1-5</p>}
         </div>
     )
 }
