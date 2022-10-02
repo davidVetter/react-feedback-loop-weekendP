@@ -1,6 +1,8 @@
 import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import axios from 'axios';
+import { NavigateBefore, NavigateNext, DoneOutline } from '@mui/icons-material';
+import { Button } from '@mui/material';
 // This is the review page of the application
 // This component will display the current feedback data that
 // the user has supplied in nice format with a button
@@ -15,6 +17,10 @@ function Review() {
     // This function will do a POST with the feedback object from
     // this feedback store in redux to the database connected
     // After the POST the user moved to the 'success' page
+    // Used the BACK_USED reducer to re-render header on page change
+    // This is the only forward that didn't change the store so
+    // **I opted not to add another reducer for this one specific purpose
+    //  when the BACK_USED is only around to trigger re-renders anyway**
     const handleSubmit = (e) => {
       e.preventDefault();
       //console.log('This worked');
@@ -50,8 +56,8 @@ function Review() {
                 <p>Understanding: {feedback.understanding}</p>
                 <p>Support: {feedback.supported}</p>
                 <p>Comments: {feedback.comments}</p>
-                <button onClick={handleBack}>⇦</button>&nbsp;
-                <button type="button" onClick={handleSubmit}>Submit</button>
+                <Button variant='contained' startIcon={<NavigateBefore />} onClick={handleBack}>Prev</Button>
+                <Button type="button" variant='contained' endIcon={<DoneOutline />} onClick={handleSubmit}>Submit</Button>
         </div>
     )
 }

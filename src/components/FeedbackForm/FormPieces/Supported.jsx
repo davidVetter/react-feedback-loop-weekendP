@@ -1,6 +1,8 @@
 import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { NavigateBefore, NavigateNext } from '@mui/icons-material';
+import { Button } from '@mui/material';
 // This is the 3rd question of the form ('How supported do you feel?')
 function Supported() {
     const [support, setSupport] = useState('');
@@ -40,6 +42,8 @@ function Supported() {
     // This function will allow the user to go back to previous
     // question and change their answer, answer must still be provided
     // and meet the original validation - original value if present will be replaced
+    // A dispatch is made to the backBtn store that will toggle
+    // the boolean in the store so a re-render occurs
     const handleBack = (e) => {
         e.preventDefault();
         dispatch({
@@ -55,16 +59,17 @@ function Supported() {
     return (
         <div className='supportedInputDiv'>
             <h3>How well are you being supported?</h3>
-            <label>How well are you being supported?<br />
+            <label>Rate: 1-5<br />
                 <input
-                    onChange={(e) => setSupport(e.target.value)}
-                    value={support}
-                    type="number"
-                    min={1}
+                    onChange={(e) => setSupport(e.target.value)} // keeps state current with inputs value
+                    value={support} // binds value to state
+                    type="number" // restricts values to only numbers
+                    min={1} // set minimum number value that can in the input to 1
+                    //set maximum number value that can in the input to 5
                     max={5} />
             </label><br />
-            <button onClick={handleBack}>⇦</button>
-            <button onClick={handleNext}>⇨</button>
+            <Button variant='contained' startIcon={<NavigateBefore />} onClick={handleBack}>Prev</Button>
+            <Button variant='contained' endIcon={<NavigateNext />} onClick={handleNext}>Next</Button>
             {/* Below only renders if the user tried to use an invalid value */}
             {notNumber && <p>Please enter a number between 1-5</p>}
         </div>

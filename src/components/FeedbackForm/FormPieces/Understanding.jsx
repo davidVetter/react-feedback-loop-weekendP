@@ -1,6 +1,8 @@
 import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { Button } from '@mui/material';
+import { NavigateBefore, NavigateNext } from '@mui/icons-material';
 // This is the 2nd question of the form ('How is you Understanding?')
 function Understanding() {
     const [understanding, setUnderstanding] = useState('');
@@ -41,6 +43,8 @@ function Understanding() {
     // This function will allow the user to go back to previous
     // question and change their answer, answer must still be provided
     // and meet the original validation - original value if present will be replaced
+    // A dispatch is made to the backBtn store that will toggle
+    // the boolean in the store so a re-render occurs
     const handleBack = (e) => {
         e.preventDefault();
         dispatch({
@@ -56,16 +60,17 @@ function Understanding() {
     return (
         <div className='understandingInputDiv'>
             <h3>How well are you understanding the content?</h3>
-            <label>Understanding?<br />
+            <label>Rate: 1-5<br />
                 <input
-                    onChange={(e) => setUnderstanding(e.target.value)}
-                    value={understanding}
-                    type="number"
-                    min={1}
+                    onChange={(e) => setUnderstanding(e.target.value)} // keeps state current with inputs value
+                    value={understanding} // binds value to state
+                    type="number" // restricts values to only numbers
+                    min={1} // set minimum number value that can in the input to 1
+                    //set maximum number value that can in the input to 5
                     max={5} />
             </label><br />
-            <button onClick={handleBack}>⇦</button>
-            <button onClick={handleNext}>⇨</button>
+            <Button variant='contained' startIcon={<NavigateBefore />} onClick={handleBack}>Prev</Button>
+            <Button variant='contained' endIcon={<NavigateNext />} onClick={handleNext}>Next</Button>
             {/* Below only renders if the user tried to use an invalid value */}
             {notNumber && <p>Please enter a number between 1-5</p>}
         </div>

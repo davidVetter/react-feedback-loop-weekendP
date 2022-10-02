@@ -1,5 +1,7 @@
 import {useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
+import { Button } from '@mui/material';
+import { RestartAlt } from '@mui/icons-material';
 // This is the Success page component
 function Success() {
     const dispatch = useDispatch();
@@ -25,7 +27,7 @@ function Success() {
             </div>
             <div className="thxMessageBtnDiv">
                 <p>THANK YOU!</p>
-                <button type='button' onClick={handleReset}>New Feedback?</button>
+                <Button variant='contained' type='button' endIcon={<RestartAlt />} onClick={handleReset}>New Feedback</Button>
             </div>
         </div>
     )

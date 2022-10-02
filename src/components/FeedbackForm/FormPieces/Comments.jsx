@@ -1,6 +1,8 @@
 import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { NavigateBefore, NavigateNext } from '@mui/icons-material';
+import { Button } from '@mui/material';
 // This is 4th and final question of the form (Any comments for us?)
 function Comments() {
     const [comments, setComments] = useState('');
@@ -32,6 +34,8 @@ function Comments() {
     // This function will allow the user to go back to previous
     // question and change their answer, answer must still be provided
     // and meet the original validation - original value if present will be replaced
+    // A dispatch is made to the backBtn store that will toggle
+    // the boolean in the store so a re-render occurs
     const handleBack = (e) => {
         e.preventDefault();
         dispatch({
@@ -48,13 +52,13 @@ function Comments() {
         <h3>Any comments you want to leave?</h3>
         <label>Comments<br />
             <textarea
-                onChange={(e) => setComments(e.target.value)}
-                placeholder="Comments"
-                value={comments}
+                onChange={(e) => setComments(e.target.value)} // keeps state current with inputs value
+                placeholder="Type here..."
+                value={comments} // binds value to state
                 type="text" />
         </label><br />
-        <button onClick={handleBack}>⇦</button>
-        <button onClick={handleNext}>⇨</button>
+        <Button variant='contained' startIcon={<NavigateBefore />} onClick={handleBack}>Prev</Button>
+        <Button variant='contained' endIcon={<NavigateNext />} onClick={handleNext}>Next</Button>
         </div>
     )
 }
