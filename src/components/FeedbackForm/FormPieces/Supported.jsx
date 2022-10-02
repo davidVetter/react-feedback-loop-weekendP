@@ -57,12 +57,13 @@ function Supported() {
     return (
         <div className='supportedInputDiv'>
             <h3>How well are you being supported?</h3>
-            <label>How well are you being supported?<br />
+            <label>Rate: 1-5<br />
                 <input
-                    onChange={(e) => setSupport(e.target.value)}
-                    value={support}
-                    type="number"
-                    min={1}
+                    onChange={(e) => setSupport(e.target.value)} // keeps state current with inputs value
+                    value={support} // binds value to state
+                    type="number" // restricts values to only numbers
+                    min={1} // set minimum number value that can in the input to 1
+                    //set maximum number value that can in the input to 5
                     max={5} />
             </label><br />
             <button onClick={handleBack}>⇦</button>

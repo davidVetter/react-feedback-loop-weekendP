@@ -58,12 +58,13 @@ function Understanding() {
     return (
         <div className='understandingInputDiv'>
             <h3>How well are you understanding the content?</h3>
-            <label>Understanding?<br />
+            <label>Rate: 1-5<br />
                 <input
-                    onChange={(e) => setUnderstanding(e.target.value)}
-                    value={understanding}
-                    type="number"
-                    min={1}
+                    onChange={(e) => setUnderstanding(e.target.value)} // keeps state current with inputs value
+                    value={understanding} // binds value to state
+                    type="number" // restricts values to only numbers
+                    min={1} // set minimum number value that can in the input to 1
+                    //set maximum number value that can in the input to 5
                     max={5} />
             </label><br />
             <button onClick={handleBack}>⇦</button>

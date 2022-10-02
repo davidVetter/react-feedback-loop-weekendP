@@ -50,9 +50,9 @@ function Comments() {
         <h3>Any comments you want to leave?</h3>
         <label>Comments<br />
             <textarea
-                onChange={(e) => setComments(e.target.value)}
-                placeholder="Comments"
-                value={comments}
+                onChange={(e) => setComments(e.target.value)} // keeps state current with inputs value
+                placeholder="Type here..."
+                value={comments} // binds value to state
                 type="text" />
         </label><br />
         <button onClick={handleBack}>⇦</button>

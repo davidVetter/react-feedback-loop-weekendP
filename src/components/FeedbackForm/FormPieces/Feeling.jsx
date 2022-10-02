@@ -45,12 +45,13 @@ function Feeling() {
     return (
         <div className='feelingInputDiv'>
             <h3>How are you feeling today?</h3>
-            <label>How are you feeling today?<br />
+            <label>Rate: 1-5<br />
                 <input
-                    onChange={(e) => setFeeling(e.target.value)}
-                    value={feeling}
-                    type="number"
-                    min={1}
+                    onChange={(e) => setFeeling(e.target.value)} // keeps state current with inputs value
+                    value={feeling} // binds value to state
+                    type="number" // restricts values to only numbers
+                    min={1} // set minimum number value that can in the input to 1
+                    //set maximum number value that can in the input to 5
                     max={5} />
             </label><br />
             <button onClick={handleNext}>⇨</button>
