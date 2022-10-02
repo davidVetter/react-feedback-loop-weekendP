@@ -1,8 +1,26 @@
-import {useState} from 'react';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import {useHistory} from 'react-router-dom';
+import axios from 'axios';
 
 function Review() {
     const feedback = useSelector(store => store.feedback);
+    const history = useHistory();
+    const dispatch = useDispatch();
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      console.log('This worked');
+      axios.post('/feedback', feedback)
+           .then((response) => {
+               dispatch({
+                   type: 'CLEAR_FEEDBACK'
+                });
+            history.push('/');
+           })
+           .catch((err) => {
+              alert('Error adding feedback');
+           });
+    }
 
     return (
         <div className='reviewFeedbackDiv'>
@@ -11,7 +29,7 @@ function Review() {
                 <p>Understanding: {feedback.understanding}</p>
                 <p>Support: {feedback.supported}</p>
                 <p>Comments: {feedback.comments}</p>
-                <button type="submit">Submit</button>
+                <button type="button" onClick={handleSubmit}>Submit</button>
         </div>
     )
 }

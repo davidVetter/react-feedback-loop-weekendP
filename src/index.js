@@ -7,7 +7,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
-let feedback = {
+const feedback = {
     feelings: '',
     understanding: '',
     supported: '',

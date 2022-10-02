@@ -1,17 +1,44 @@
-import React from 'react';
-import axios from 'axios';
 import './App.css';
-import FeedbackForm from '../FeedbackForm/FeedbackForm.jsx';
+import {HashRouter as Router, Route, Switch} from "react-router-dom";
+import Header from '../Header/Header';
+import Comments from '../FeedbackForm/FormPieces/Comments';
+import Feeling from '../FeedbackForm/FormPieces/Feeling';
+import Review from '../FeedbackForm/FormPieces/Review';
+import Supported from '../FeedbackForm/FormPieces/Supported';
+import Understanding from '../FeedbackForm/FormPieces/Understanding';
+
+
 
 function App() {
 
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <h1 className='App-title'>Feedback!</h1>
-        <h4>Don't forget it!</h4>
-      </header>
-        <FeedbackForm />
+    <div className="App">
+      <form >
+        <Router>
+          <Switch>
+            <Route path="/" exact>
+              <Header />
+              <Feeling />
+            </Route>
+            <Route path="/understanding">
+              <Header />
+              <Understanding />
+            </Route>
+            <Route path="/supported">
+              <Header />
+              <Supported />
+            </Route>
+            <Route path="/comments">
+              <Header />
+              <Comments />
+            </Route>
+            <Route path="/review">
+              <Header />
+              <Review />
+            </Route>
+          </Switch>
+        </Router>
+      </form>
     </div>
   );
 }
