@@ -14,7 +14,7 @@ function Review() {
   
     const handleSubmit = (e) => {
       e.preventDefault();
-      console.log('This worked');
+      //console.log('This worked');
       axios.post('/feedback', feedback)
            .then((response) => {
             history.push('/success');
