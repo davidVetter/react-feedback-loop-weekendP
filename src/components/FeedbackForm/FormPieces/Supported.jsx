@@ -42,6 +42,9 @@ function Supported() {
     // and meet the original validation - original value if present will be replaced
     const handleBack = (e) => {
         e.preventDefault();
+        dispatch({
+            type: 'BACK_USED'
+        });
         history.push('/understanding'); // move user
     }
     // Renders the question and input for user to enter answer
@@ -59,11 +62,11 @@ function Supported() {
                     type="number"
                     min={1}
                     max={5} />
-            </label>
-            <button onClick={handleNext}>Next</button>
-            <button onClick={handleBack}>Back</button>
+            </label><br />
+            <button onClick={handleBack}>⇦</button>
+            <button onClick={handleNext}>⇨</button>
             {/* Below only renders if the user tried to use an invalid value */}
-            {notNumber && <p>Please use a number between 1-5</p>}
+            {notNumber && <p>Please enter a number between 1-5</p>}
         </div>
     )
 }

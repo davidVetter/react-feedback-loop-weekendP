@@ -41,7 +41,7 @@ function App() {
             <Route path="/review">
               <Review />
             </Route>
-            {/* Route for the feedback recieved success page */}
+            {/* Route for the feedback recieved success  */}
             <Route path="/success">
               <Success />
             </Route>

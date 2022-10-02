@@ -52,10 +52,10 @@ function Feeling() {
                     type="number"
                     min={1}
                     max={5} />
-            </label>
-            <button onClick={handleNext}>Next</button>
+            </label><br />
+            <button onClick={handleNext}>⇨</button>
             {/* Below only renders if the user tried to use an invalid value */}
-            {notNumber && <p>Please use a number between 1-5</p>} 
+            {notNumber && <p>Please enter a number between 1-5</p>} 
         </div>
     )
 }

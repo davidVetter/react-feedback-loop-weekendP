@@ -34,7 +34,10 @@ function Comments() {
     // and meet the original validation - original value if present will be replaced
     const handleBack = (e) => {
         e.preventDefault();
-        history.push('/supported');
+        dispatch({
+            type: 'BACK_USED'
+        });
+        history.push('/supported'); // move user
     }
     // Renders the question and input for user to enter answer
     // A next button will move the user to the next page of
@@ -44,14 +47,14 @@ function Comments() {
         <div className='commentsInputDiv'>
         <h3>Any comments you want to leave?</h3>
         <label>Comments<br />
-            <input
+            <textarea
                 onChange={(e) => setComments(e.target.value)}
                 placeholder="Comments"
                 value={comments}
                 type="text" />
-        </label>
-        <button onClick={handleNext}>Next</button>
-        <button onClick={handleBack}>Back</button>
+        </label><br />
+        <button onClick={handleBack}>⇦</button>
+        <button onClick={handleNext}>⇨</button>
         </div>
     )
 }

@@ -7,11 +7,13 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 import feedbackReducer from './redux/reducers/feedback.reducer';
+import backBtnReducer from './redux/reducers/backBtn.reducer';
 
 // setup store to use
 const storeInstance = createStore(
     combineReducers({
-        feedback: feedbackReducer
+        feedback: feedbackReducer,
+        backBtn: backBtnReducer
     }),
     applyMiddleware(logger)
 )
