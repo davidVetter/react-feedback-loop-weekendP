@@ -73,6 +73,10 @@ function Feeling() {
         {feeling && <h3>Current Selection: {feeling}</h3>}
         <Rating
           name="hover-feedback"
+          sx={{
+            color: 'info.main',
+            mb: 1
+          }}
           value={value}
           precision={1}
           getLabelText={getLabelText}

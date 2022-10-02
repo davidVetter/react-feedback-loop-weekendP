@@ -76,6 +76,10 @@ function Understanding() {
         {understanding && <h3>Current Selection: {understanding}</h3>}
           <Rating
             name="hover-feedback"
+            sx={{
+                color: 'info.main',
+                mb: 1
+              }}
             value={value}
             precision={1}
             getLabelText={getLabelText} // calls function to determine text to display based on selection
@@ -97,7 +101,8 @@ function Understanding() {
           {/* This component makes the buttons stay side by side nicely */}
           <ButtonGroup variant='contained' aria-label="outlined primary button group">
             <Button
-                variant="contained"
+                variant='outlined' 
+                color='info'
                 startIcon={<NavigateBefore />}
                 onClick={handleBack}
             >

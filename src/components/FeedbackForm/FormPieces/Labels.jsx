@@ -1,9 +1,9 @@
 const labels = {
-    1: 'Useless',
+    1: 'Very Poor',
     2: 'Poor',
-    3: 'Ok',
+    3: 'Meh',
     4: 'Good',
-    5: 'Excellent',
+    5: 'Very Good',
   };
 
   export default labels;

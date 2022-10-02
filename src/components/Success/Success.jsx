@@ -27,7 +27,7 @@ function Success() {
             </div>
             <div className="thxMessageBtnDiv">
                 <p>THANK YOU!</p>
-                <Button variant='contained' type='button' endIcon={<RestartAlt />} onClick={handleReset}>New Feedback</Button>
+                <Button variant='contained' color='success' type='button' endIcon={<RestartAlt />} onClick={handleReset}>New Feedback</Button>
             </div>
         </div>
     )
