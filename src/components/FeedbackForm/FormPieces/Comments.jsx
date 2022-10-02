@@ -3,6 +3,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { NavigateBefore, NavigateNext } from '@mui/icons-material';
 import { Button, ButtonGroup, TextField } from '@mui/material';
+import { motion } from 'framer-motion';
+import pageTransition from '../../Animations/PageTransition';
 // This is 4th and final question of the form (Any comments for us?)
 function Comments() {
     const [comments, setComments] = useState('');
@@ -48,7 +50,12 @@ function Comments() {
     // application
      // A 'back' button will move the user to the previous question (supported)
     return (
-        <div className='commentsInputDiv'>
+        <motion.div 
+            className='commentsInputDiv'
+            exit='out'
+            animate='in'
+            initial='out'
+            variants={pageTransition}>
         <h3>Any comments you want to leave?</h3>
             <TextField
                 variant='filled'
@@ -67,7 +74,7 @@ function Comments() {
         <Button variant='outlined' color='info' startIcon={<NavigateBefore />} onClick={handleBack}>Prev</Button>
         <Button variant='contained' endIcon={<NavigateNext />} onClick={handleNext}>Next</Button>
         </ButtonGroup>
-        </div>
+        </motion.div>
     )
 }
 
