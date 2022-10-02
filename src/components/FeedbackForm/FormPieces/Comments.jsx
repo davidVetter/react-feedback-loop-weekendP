@@ -1,9 +1,11 @@
 import {useState} from 'react';
 import {useDispatch} from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 function Comments() {
     const [comments, setComments] = useState('');
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const handleNext = (e) => {
         e.preventDefault();
@@ -12,6 +14,7 @@ function Comments() {
             payload: comments
         });
         setComments('');
+        history.push('/review');
     }
 
     return (

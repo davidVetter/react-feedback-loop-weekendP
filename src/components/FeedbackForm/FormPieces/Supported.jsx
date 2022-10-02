@@ -1,10 +1,12 @@
 import {useState} from 'react';
 import {useDispatch} from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 function Supported() {
     const [support, setSupport] = useState('');
     const [notNumber, setNotNumber] = useState(false);
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const handleNext = (e) => {
         e.preventDefault();
@@ -15,6 +17,7 @@ function Supported() {
         });
         setSupport('');
         setNotNumber(false);
+        history.push('/comments');
         } else {
             setNotNumber(true);
         }
