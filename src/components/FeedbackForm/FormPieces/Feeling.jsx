@@ -38,9 +38,10 @@ function Feeling() {
             <label>How are you feeling today?<br />
                 <input
                     onChange={(e) => setFeeling(e.target.value)}
-                    placeholder="Feeling?"
                     value={feeling}
-                    type="text" />
+                    type="number"
+                    min={1}
+                    max={5} />
             </label>
             <button onClick={handleNext}>Next</button>
             {/* Below only renders if the user tried to use an invalid value */}

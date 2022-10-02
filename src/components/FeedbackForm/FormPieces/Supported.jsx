@@ -37,9 +37,10 @@ function Supported() {
             <label>How well are you being supported?<br />
                 <input
                     onChange={(e) => setSupport(e.target.value)}
-                    placeholder="Supported?"
                     value={support}
-                    type="text" />
+                    type="number"
+                    min={1}
+                    max={5} />
             </label>
             <button onClick={handleNext}>Next</button>
             {/* Below only renders if the user tried to use an invalid value */}

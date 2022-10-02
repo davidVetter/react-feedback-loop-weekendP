@@ -38,9 +38,10 @@ function Understanding() {
             <label>Understanding?<br />
                 <input
                     onChange={(e) => setUnderstanding(e.target.value)}
-                    placeholder="Understanding?"
                     value={understanding}
-                    type="text" />
+                    type="number"
+                    min={1}
+                    max={5} />
             </label>
             <button onClick={handleNext}>Next</button>
             {/* Below only renders if the user tried to use an invalid value */}
