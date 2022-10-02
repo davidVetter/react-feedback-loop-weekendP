@@ -1,6 +1,8 @@
 import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { Button } from '@mui/material';
+import { NavigateBefore, NavigateNext } from '@mui/icons-material';
 // This is the 2nd question of the form ('How is you Understanding?')
 function Understanding() {
     const [understanding, setUnderstanding] = useState('');
@@ -67,8 +69,8 @@ function Understanding() {
                     //set maximum number value that can in the input to 5
                     max={5} />
             </label><br />
-            <button onClick={handleBack}>⇦</button>
-            <button onClick={handleNext}>⇨</button>
+            <Button variant='contained' startIcon={<NavigateBefore />} onClick={handleBack}>Prev</Button>
+            <Button variant='contained' endIcon={<NavigateNext />} onClick={handleNext}>Next</Button>
             {/* Below only renders if the user tried to use an invalid value */}
             {notNumber && <p>Please enter a number between 1-5</p>}
         </div>

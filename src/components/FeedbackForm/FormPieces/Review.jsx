@@ -1,6 +1,8 @@
 import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import axios from 'axios';
+import { NavigateBefore, NavigateNext, DoneOutline } from '@mui/icons-material';
+import { Button } from '@mui/material';
 // This is the review page of the application
 // This component will display the current feedback data that
 // the user has supplied in nice format with a button
@@ -54,8 +56,8 @@ function Review() {
                 <p>Understanding: {feedback.understanding}</p>
                 <p>Support: {feedback.supported}</p>
                 <p>Comments: {feedback.comments}</p>
-                <button onClick={handleBack}>⇦</button>&nbsp;
-                <button type="button" onClick={handleSubmit}>Submit</button>
+                <Button variant='contained' startIcon={<NavigateBefore />} onClick={handleBack}>Prev</Button>
+                <Button type="button" variant='contained' endIcon={<DoneOutline />} onClick={handleSubmit}>Submit</Button>
         </div>
     )
 }

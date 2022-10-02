@@ -1,6 +1,8 @@
 import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { NavigateBefore, NavigateNext } from '@mui/icons-material';
+import { Button } from '@mui/material';
 // This is 4th and final question of the form (Any comments for us?)
 function Comments() {
     const [comments, setComments] = useState('');
@@ -55,8 +57,8 @@ function Comments() {
                 value={comments} // binds value to state
                 type="text" />
         </label><br />
-        <button onClick={handleBack}>⇦</button>
-        <button onClick={handleNext}>⇨</button>
+        <Button variant='contained' startIcon={<NavigateBefore />} onClick={handleBack}>Prev</Button>
+        <Button variant='contained' endIcon={<NavigateNext />} onClick={handleNext}>Next</Button>
         </div>
     )
 }

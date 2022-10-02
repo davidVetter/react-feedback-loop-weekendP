@@ -1,6 +1,8 @@
 import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { NavigateBefore, NavigateNext } from '@mui/icons-material';
+import { Button } from '@mui/material';
 // This is the 3rd question of the form ('How supported do you feel?')
 function Supported() {
     const [support, setSupport] = useState('');
@@ -66,8 +68,8 @@ function Supported() {
                     //set maximum number value that can in the input to 5
                     max={5} />
             </label><br />
-            <button onClick={handleBack}>⇦</button>
-            <button onClick={handleNext}>⇨</button>
+            <Button variant='contained' startIcon={<NavigateBefore />} onClick={handleBack}>Prev</Button>
+            <Button variant='contained' endIcon={<NavigateNext />} onClick={handleNext}>Next</Button>
             {/* Below only renders if the user tried to use an invalid value */}
             {notNumber && <p>Please enter a number between 1-5</p>}
         </div>
