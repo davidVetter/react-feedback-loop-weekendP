@@ -21,6 +21,9 @@ function Review() {
       axios.post('/feedback', feedback)
            .then((response) => {
             history.push('/success'); // move user
+            dispatch({
+                type: 'BACK_USED' // used here to trigger the header re-render
+            });
            })
            .catch((err) => {
               alert('Error adding feedback');
