@@ -5,6 +5,8 @@ import { Button, ButtonGroup, Rating, Box } from '@mui/material';
 import { NavigateBefore, NavigateNext, Stars } from '@mui/icons-material';
 import getLabelText from './GetLabel';
 import labels from './Labels';
+import {motion} from 'framer-motion';
+import pageTransition from '../../Animations/PageTransition';
 // This is the 2nd question of the form ('How is you Understanding?')
 function Understanding() {
     const [understanding, setUnderstanding] = useState('');
@@ -62,7 +64,12 @@ function Understanding() {
     // trys to move on with bad data in input
     // A 'back' button will move the user to the previous question (feeling)
     return (
-      <div className="understandingInputDiv">
+      <motion.div 
+        className="understandingInputDiv"
+        exit='out'
+        animate='in'
+        initial='out'
+        variants={pageTransition}>
         <h3>How well are you understanding the content?</h3>
         <Box
           sx={{
@@ -119,7 +126,7 @@ function Understanding() {
           {/* Below only renders if the user tried to use an invalid value */}
           {notNumber && <p>Please select a rating! 🤔</p>}
         </Box>
-      </div>
+      </motion.div>
     );
 }
 

@@ -1,5 +1,5 @@
 import './App.css';
-import {HashRouter as Router, Route, Switch} from "react-router-dom";
+import { Route, Switch, useLocation } from "react-router-dom";
 import Header from '../Header/Header';
 import Comments from '../FeedbackForm/FormPieces/Comments';
 import Feeling from '../FeedbackForm/FormPieces/Feeling';
@@ -7,10 +7,12 @@ import Review from '../FeedbackForm/FormPieces/Review';
 import Supported from '../FeedbackForm/FormPieces/Supported';
 import Understanding from '../FeedbackForm/FormPieces/Understanding';
 import Success from '../Success/Success';
+import { AnimatePresence } from 'framer-motion';
 
 
 
 function App() {
+  const location = useLocation();
   // Render form based on current route
   // "Next" buttons in the components move the user through the form
   return (
@@ -19,8 +21,8 @@ function App() {
       <Header />
       <form >
         {/* All parts of the app form pages are wrapped in a router */}
-        <Router>
-          <Switch>
+          <AnimatePresence exitBeforeEnter>
+          <Switch location={location} key={location.pathname}>
             {/* Route for the starting, first question */}
             <Route path="/" exact>
               <Feeling />
@@ -46,7 +48,7 @@ function App() {
               <Success />
             </Route>
           </Switch>
-        </Router>
+          </AnimatePresence>
       </form>
     </div>
   );

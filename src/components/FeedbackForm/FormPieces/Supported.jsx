@@ -3,8 +3,11 @@ import {useDispatch, useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { NavigateBefore, NavigateNext, Stars } from '@mui/icons-material';
 import { Button, ButtonGroup, Rating, Box } from '@mui/material';
+import { motion } from 'framer-motion';
 import getLabelText from './GetLabel';
 import labels from './Labels';
+import pageTransition from '../../Animations/PageTransition';
+
 // This is the 3rd question of the form ('How supported do you feel?')
 function Supported() {
     const [support, setSupport] = useState('');
@@ -61,7 +64,12 @@ function Supported() {
     // trys to move on with bad data in input
     // A 'back' button will move the user to the previous question (understanding)
     return (
-      <div className="supportedInputDiv">
+      <motion.div 
+        className="supportedInputDiv"
+        exit='out'
+        animate='in'
+        initial='out'
+        variants={pageTransition}>
         <h3>How well are you being supported?</h3>
         <Box
           sx={{
@@ -120,7 +128,7 @@ function Supported() {
           {/* Below only renders if the user tried to use an invalid value */}
           {notNumber && <p>Please select a rating! 🤔</p>}
         </Box>
-      </div>
+      </motion.div>
     );
 }
 

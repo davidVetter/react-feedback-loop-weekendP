@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 import feedbackReducer from './redux/reducers/feedback.reducer';
 import backBtnReducer from './redux/reducers/backBtn.reducer';
+import {HashRouter as Router, Route, Switch, useLocation} from "react-router-dom";
 
 // setup store to use
 const storeInstance = createStore(
@@ -21,7 +22,9 @@ const storeInstance = createStore(
 // wrap app in provider, set redux store to be used
 ReactDOM.render(
     <Provider store={storeInstance}>
-        <App />
+        <Router>
+            <App />
+        </Router>
     </Provider>, 
     document.getElementById('root'));
 registerServiceWorker();
