@@ -11,34 +11,38 @@ import Success from '../Success/Success';
 
 
 function App() {
-
+  // Render form based on current route
+  // "Next" buttons in the components move the user through the form
   return (
     <div className="App">
+      {/* Renders the header atop of all pages in the app */}
+      <Header />
       <form >
+        {/* All parts of the app form pages are wrapped in a router */}
         <Router>
           <Switch>
+            {/* Route for the starting, first question */}
             <Route path="/" exact>
-              <Header />
               <Feeling />
             </Route>
+            {/* Route for the 2nd question */}
             <Route path="/understanding">
-              <Header />
               <Understanding />
             </Route>
+            {/* Route for the 3rd question */}
             <Route path="/supported">
-              <Header />
               <Supported />
             </Route>
+            {/* Route for the last question */}
             <Route path="/comments">
-              <Header />
               <Comments />
             </Route>
+            {/* Route to review and submit page */}
             <Route path="/review">
-              <Header />
               <Review />
             </Route>
+            {/* Route for the feedback recieved success page */}
             <Route path="/success">
-              <Header />
               <Success />
             </Route>
           </Switch>

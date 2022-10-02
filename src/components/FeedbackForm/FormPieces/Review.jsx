@@ -1,7 +1,13 @@
 import {useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import axios from 'axios';
-
+// This is the review page of the application
+// This component will display the current feedback data that
+// the user has supplied in nice format with a button
+// to submit the data if review is good
+// Upon submit btn click the feedback object in redux store(feedback)
+// is sent in a POST to our database along the '/feedback' url
+// The user is then moved to the success page after POST
 function Review() {
     const feedback = useSelector(store => store.feedback);
     const history = useHistory();
@@ -17,7 +23,9 @@ function Review() {
               alert('Error adding feedback');
            });
     }
-
+    // Renders a heading with some paragraph elements to display the
+    // current data in redux store
+    // On submit button click, user is moved to success page
     return (
         <div className='reviewFeedbackDiv'>
                 <h3>Review your feedback</h3>

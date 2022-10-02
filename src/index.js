@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 import feedbackReducer from './redux/reducers/feedback.reducer';
 
+// setup store to use
 const storeInstance = createStore(
     combineReducers({
         feedback: feedbackReducer
@@ -15,6 +16,7 @@ const storeInstance = createStore(
     applyMiddleware(logger)
 )
 
+// wrap app in provider, set redux store to be used
 ReactDOM.render(
     <Provider store={storeInstance}>
         <App />

@@ -1,10 +1,14 @@
 import {useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
-
+// This is the Success page component
 function Success() {
     const dispatch = useDispatch();
     const history = useHistory();
-    
+    // This function handles the "new feedback" button
+    // On click a dispatch will clear the current
+    // data in the redux store and move the user
+    // back to the first page to start a new feedback
+    // submission
     const handleReset = (e) => {
         e.preventDefault();
         dispatch({
@@ -12,7 +16,8 @@ function Success() {
          });
         history.push('/');
     }
-    
+    // Renders 2 div elements that contain some text to indicate
+    // to user that the feedback has been added to our database
     return (
         <div className="successDiv">
             <div className="successMessage">
