@@ -1,8 +1,8 @@
 import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Button } from '@mui/material';
-import { NavigateNext } from '@mui/icons-material';
+import { Button, Rating, Box } from '@mui/material';
+import { NavigateNext, Stars} from '@mui/icons-material';
 // This is the 'How are you feeling' question component of
 // the feedback form (1st question/starting page of form)
 function Feeling() {
@@ -11,6 +11,21 @@ function Feeling() {
     const dispatch = useDispatch();
     const history = useHistory();
     const feedback = useSelector(store => store.feedback);
+    const [value, setValue] = useState(2);
+    const [hover, setHover] = useState(-1);
+
+    const labels = {
+        1: 'Useless',
+        2: 'Poor',
+        3: 'Ok',
+        4: 'Good',
+        5: 'Excellent',
+      };
+
+      function getLabelText(value) {
+        return `${value} Star${value !== 1 ? 's' : ''}, ${labels[value]}`;
+      }
+
     // This conditional will check if feelings store in redux already has
     // a value and will display that value in the input
     // This is used to populate the input if the user uses the back button
@@ -45,9 +60,9 @@ function Feeling() {
     // if the data is good, a message will render if a user
     // trys to move on with bad data in input
     return (
-        <div className='feelingInputDiv'>
-            <h3>How are you feeling today?</h3>
-            <label>Rate: 1-5<br />
+      <div className="feelingInputDiv">
+        <h3>How are you feeling today?</h3>
+        {/* <label>Rate: 1-5<br />
                 <input
                     onChange={(e) => setFeeling(e.target.value)} // keeps state current with inputs value
                     value={feeling} // binds value to state
@@ -55,12 +70,45 @@ function Feeling() {
                     min={1} // set minimum number value that can in the input to 1
                     //set maximum number value that can in the input to 5
                     max={5} />
-            </label><br />
-            <Button variant='contained' endIcon={<NavigateNext />} onClick={handleNext}>Next</Button>
-            {/* Below only renders if the user tried to use an invalid value */}
-            {notNumber && <p>Please enter a number between 1-5</p>} 
-        </div>
-    )
+            </label><br /> */}
+        <Box
+          sx={{
+            width: 200,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center"
+          }}
+        >
+        <h3>Current Selection: {feeling}</h3>
+        <Rating
+          name="hover-feedback"
+          value={value}
+          precision={1}
+          getLabelText={getLabelText}
+          onChange={(e, newValue) => {
+            setValue(newValue);
+            setFeeling(newValue);
+          }}
+          onChangeActive={(e, newHover) => {
+            setHover(newHover);
+          }}
+          emptyIcon={<Stars style={{ opacity: 0.55 }} fontSize="inherit" />}
+        />
+        {value !== null && (
+         <Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>
+        )}
+        <Button
+          variant="contained"
+          endIcon={<NavigateNext />}
+          onClick={handleNext}
+        >
+          Next
+        </Button>
+        {/* Below only renders if the user tried to use an invalid value */}
+        {notNumber && <p>Please select a rating! 🤔</p>}
+        </Box>
+      </div>
+    );
 }
 
 export default Feeling;
