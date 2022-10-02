@@ -1,8 +1,10 @@
 import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { NavigateBefore, NavigateNext } from '@mui/icons-material';
-import { Button } from '@mui/material';
+import { NavigateBefore, NavigateNext, Stars } from '@mui/icons-material';
+import { Button, ButtonGroup, Rating, Box } from '@mui/material';
+import getLabelText from './GetLabel';
+import labels from './Labels';
 // This is the 3rd question of the form ('How supported do you feel?')
 function Supported() {
     const [support, setSupport] = useState('');
@@ -10,6 +12,8 @@ function Supported() {
     const dispatch = useDispatch();
     const history = useHistory();
     const feedback = useSelector(store => store.feedback);
+    const [value, setValue] = useState(3);
+    const [hover, setHover] = useState(-1);
     // This conditional will check if understand store in redux already has
     // a value and will display that value in the input
     // This is used to populate the input if the user uses the back button
@@ -57,23 +61,67 @@ function Supported() {
     // trys to move on with bad data in input
     // A 'back' button will move the user to the previous question (understanding)
     return (
-        <div className='supportedInputDiv'>
-            <h3>How well are you being supported?</h3>
-            <label>Rate: 1-5<br />
-                <input
-                    onChange={(e) => setSupport(e.target.value)} // keeps state current with inputs value
-                    value={support} // binds value to state
-                    type="number" // restricts values to only numbers
-                    min={1} // set minimum number value that can in the input to 1
-                    //set maximum number value that can in the input to 5
-                    max={5} />
-            </label><br />
-            <Button variant='contained' startIcon={<NavigateBefore />} onClick={handleBack}>Prev</Button>
-            <Button variant='contained' endIcon={<NavigateNext />} onClick={handleNext}>Next</Button>
-            {/* Below only renders if the user tried to use an invalid value */}
-            {notNumber && <p>Please enter a number between 1-5</p>}
-        </div>
-    )
+      <div className="supportedInputDiv">
+        <h3>How well are you being supported?</h3>
+        <Box
+          sx={{
+            width: 600,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          {/* Render the user's current selection if they have made one previously */}
+          {support && <h3>Current Selection: {support}</h3>}
+          <Rating
+            name="hover-feedback"
+            sx={{
+                color: 'info.main',
+                mb: 1
+              }}
+            value={value}
+            precision={1}
+            getLabelText={getLabelText} // calls function to determine text to display based on selection
+            onChange={(e, newValue) => {
+              setValue(newValue); // sets 2 local states to control rendering
+              setSupport(newValue);
+            }}
+            onChangeActive={(e, newHover) => {
+              setHover(newHover); // sets local state so displayed text changes as user hovers stars
+            }}
+            emptyIcon={<Stars style={{ opacity: 0.55 }} fontSize="inherit" />}
+          />
+          {value !== null && (
+            <Box sx={{ textAlign: "center", mb: 2 }}>
+              {labels[hover !== -1 ? hover : value]}
+            </Box>
+          )}
+          {/* This component makes the buttons stay side by side nicely */}
+          <ButtonGroup
+            variant="contained"
+            aria-label="outlined primary button group"
+          >
+            <Button
+              variant='outlined' 
+              color='info'
+              startIcon={<NavigateBefore />}
+              onClick={handleBack}
+            >
+              Prev
+            </Button>
+            <Button
+              variant="contained"
+              endIcon={<NavigateNext />}
+              onClick={handleNext}
+            >
+              Next
+            </Button>
+          </ButtonGroup>
+          {/* Below only renders if the user tried to use an invalid value */}
+          {notNumber && <p>Please select a rating! 🤔</p>}
+        </Box>
+      </div>
+    );
 }
 
 export default Supported;

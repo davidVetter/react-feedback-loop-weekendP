@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { NavigateBefore, NavigateNext } from '@mui/icons-material';
-import { Button } from '@mui/material';
+import { Button, ButtonGroup, TextField } from '@mui/material';
 // This is 4th and final question of the form (Any comments for us?)
 function Comments() {
     const [comments, setComments] = useState('');
@@ -50,15 +50,23 @@ function Comments() {
     return (
         <div className='commentsInputDiv'>
         <h3>Any comments you want to leave?</h3>
-        <label>Comments<br />
-            <textarea
+            <TextField
+                variant='filled'
+                multiline
+                sx={{mb: 1, padding: 1}}
                 onChange={(e) => setComments(e.target.value)} // keeps state current with inputs value
                 placeholder="Type here..."
                 value={comments} // binds value to state
                 type="text" />
-        </label><br />
-        <Button variant='contained' startIcon={<NavigateBefore />} onClick={handleBack}>Prev</Button>
+                <br />
+        {/* This component makes the buttons stay side by side nicely */}
+        <ButtonGroup
+            variant="contained"
+            aria-label="outlined primary button group"
+        >
+        <Button variant='outlined' color='info' startIcon={<NavigateBefore />} onClick={handleBack}>Prev</Button>
         <Button variant='contained' endIcon={<NavigateNext />} onClick={handleNext}>Next</Button>
+        </ButtonGroup>
         </div>
     )
 }
