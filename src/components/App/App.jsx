@@ -6,6 +6,7 @@ import Feeling from '../FeedbackForm/FormPieces/Feeling';
 import Review from '../FeedbackForm/FormPieces/Review';
 import Supported from '../FeedbackForm/FormPieces/Supported';
 import Understanding from '../FeedbackForm/FormPieces/Understanding';
+import Success from '../Success/Success';
 
 
 
@@ -35,6 +36,10 @@ function App() {
             <Route path="/review">
               <Header />
               <Review />
+            </Route>
+            <Route path="/success">
+              <Header />
+              <Success />
             </Route>
           </Switch>
         </Router>
