@@ -15,6 +15,10 @@ function Review() {
     // This function will do a POST with the feedback object from
     // this feedback store in redux to the database connected
     // After the POST the user moved to the 'success' page
+    // Used the BACK_USED reducer to re-render header on page change
+    // This is the only forward that didn't change the store so
+    // **I opted not to add another reducer for this one specific purpose
+    //  when the BACK_USED is only around to trigger re-renders anyway**
     const handleSubmit = (e) => {
       e.preventDefault();
       //console.log('This worked');

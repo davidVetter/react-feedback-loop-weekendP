@@ -41,6 +41,8 @@ function Understanding() {
     // This function will allow the user to go back to previous
     // question and change their answer, answer must still be provided
     // and meet the original validation - original value if present will be replaced
+    // A dispatch is made to the backBtn store that will toggle
+    // the boolean in the store so a re-render occurs
     const handleBack = (e) => {
         e.preventDefault();
         dispatch({
