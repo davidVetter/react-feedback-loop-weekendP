@@ -3,6 +3,8 @@ import {useHistory} from 'react-router-dom';
 import axios from 'axios';
 import { NavigateBefore, NavigateNext, DoneOutline, HistoryOutlined } from '@mui/icons-material';
 import { Button, ButtonGroup } from '@mui/material';
+import { motion } from 'framer-motion';
+import pageTransition from '../../Animations/PageTransition';
 // This is the review page of the application
 // This component will display the current feedback data that
 // the user has supplied in nice format with a button
@@ -73,7 +75,12 @@ function Review() {
     // On submit button click, user is moved to success page
     // A 'back' button will move the user to the previous question (comments)
     return (
-      <div className="reviewFeedbackDiv">
+      <motion.div 
+        className="reviewFeedbackDiv"
+        exit='out'
+        animate='in'
+        initial='out'
+        variants={pageTransition}>
         <h3>Review your feedback</h3>
         <p>Feelings: {feedback.feelings}</p>
         <p>Understanding: {feedback.understanding}</p>
@@ -101,7 +108,7 @@ function Review() {
             Submit
           </Button>
         </ButtonGroup>
-      </div>
+      </motion.div>
     );
 }
 
