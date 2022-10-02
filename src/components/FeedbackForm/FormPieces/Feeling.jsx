@@ -3,6 +3,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Button, Rating, Box } from '@mui/material';
 import { NavigateNext, Stars} from '@mui/icons-material';
+import getLabelText from './GetLabel';
+import labels from './Labels';
 // This is the 'How are you feeling' question component of
 // the feedback form (1st question/starting page of form)
 function Feeling() {
@@ -11,20 +13,8 @@ function Feeling() {
     const dispatch = useDispatch();
     const history = useHistory();
     const feedback = useSelector(store => store.feedback);
-    const [value, setValue] = useState(2);
+    const [value, setValue] = useState(3);
     const [hover, setHover] = useState(-1);
-
-    const labels = {
-        1: 'Useless',
-        2: 'Poor',
-        3: 'Ok',
-        4: 'Good',
-        5: 'Excellent',
-      };
-
-      function getLabelText(value) {
-        return `${value} Star${value !== 1 ? 's' : ''}, ${labels[value]}`;
-      }
 
     // This conditional will check if feelings store in redux already has
     // a value and will display that value in the input
@@ -73,13 +63,14 @@ function Feeling() {
             </label><br /> */}
         <Box
           sx={{
-            width: 200,
+            width: 600,
             display: "flex",
             flexDirection: "column",
             alignItems: "center"
           }}
         >
-        <h3>Current Selection: {feeling}</h3>
+        {/* Render the user's current selection if they have made one previously */}
+        {feeling && <h3>Current Selection: {feeling}</h3>}
         <Rating
           name="hover-feedback"
           value={value}
@@ -95,7 +86,7 @@ function Feeling() {
           emptyIcon={<Stars style={{ opacity: 0.55 }} fontSize="inherit" />}
         />
         {value !== null && (
-         <Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>
+         <Box sx={{ textAlign: 'center', mb: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>
         )}
         <Button
           variant="contained"
