@@ -11,21 +11,31 @@ import axios from 'axios';
 function Review() {
     const feedback = useSelector(store => store.feedback);
     const history = useHistory();
-  
+    // This function will do a POST with the feedback object from
+    // this feedback store in redux to the database connected
+    // After the POST the user moved to the 'success' page
     const handleSubmit = (e) => {
       e.preventDefault();
       //console.log('This worked');
       axios.post('/feedback', feedback)
            .then((response) => {
-            history.push('/success');
+            history.push('/success'); // move user
            })
            .catch((err) => {
               alert('Error adding feedback');
            });
     }
+    // This function will allow the user to go back to previous
+    // question and change their answer, answer must still be provided
+    // and meet the original validation - original value if present will be replaced
+    const handleBack = (e) => {
+        e.preventDefault();
+        history.push('/comments'); // move user
+    }
     // Renders a heading with some paragraph elements to display the
     // current data in redux store
     // On submit button click, user is moved to success page
+    // A 'back' button will move the user to the previous question (comments)
     return (
         <div className='reviewFeedbackDiv'>
                 <h3>Review your feedback</h3>
@@ -34,6 +44,7 @@ function Review() {
                 <p>Support: {feedback.supported}</p>
                 <p>Comments: {feedback.comments}</p>
                 <button type="button" onClick={handleSubmit}>Submit</button>
+                <button onClick={handleBack}>Back</button>
         </div>
     )
 }

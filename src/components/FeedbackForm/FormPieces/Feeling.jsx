@@ -1,5 +1,5 @@
-import {useState} from 'react';
-import {useDispatch} from 'react-redux';
+import {useState, useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 // This is the 'How are you feeling' question component of
 // the feedback form (1st question/starting page of form)
@@ -8,6 +8,16 @@ function Feeling() {
     const [notNumber, setNotNumber] = useState(false);
     const dispatch = useDispatch();
     const history = useHistory();
+    const feedback = useSelector(store => store.feedback);
+    // This conditional will check if feelings store in redux already has
+    // a value and will display that value in the input
+    // This is used to populate the input if the user uses the back button
+    // a question and returns to the previous question
+    useEffect(() => {
+        if (feedback.feelings && !(feedback.feelings === feeling)) {
+            setFeeling(feedback.feelings);
+        }
+    }, [])
     // This function will check if the user entered values
     // are numbers between 1-5, if so then the value is 
     // added to redux feedback store, local state cleared
