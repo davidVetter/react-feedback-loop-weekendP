@@ -1,11 +1,14 @@
 .App {
   text-align: center;
+  background-color: #A29C9B;
+  height: 100vh;
 }
 
 .App-header {
-  background-color: #033076;
+  background-color: #DB324D;
   min-height: 70px;
   padding: 20px;
+  font-size: 1.3vw;
   color: white;
   margin-bottom: 20px;
 }
@@ -22,9 +25,56 @@ h4 {
   font-style: italic;
 }
 
-.feelingInputDiv, .understandingInputDiv, .supportedInputDiv {
+h3 {
+  font-size: 1.2vw;
+}
+
+.questionHead {
+  font-size: 1.7vw;
+}
+
+.feelingInputDiv, .understandingInputDiv, 
+.supportedInputDiv, .commentsInputDiv, 
+.reviewFeedbackDiv, .successDiv {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.reviewPaper, .successDiv {
+  padding: 3% 10%;
+  width: 50vw;
+}
+
+/* .commentsInputDiv {
+  width: 80%;
+  margin: 0 auto;
+} */
+
+.pickMessage {
+  font-size: 2vw;
+}
+
+.headerEmoji {
+  font-size: 4vw;
+}
+
+.emojiBig {
+  font-size: 3vw;
+}
+
+.commentBox {
+  margin: 0 0;
+}
+
+.questionPaper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  height: 25vh;
 }

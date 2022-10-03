@@ -8,6 +8,7 @@ import Supported from '../FeedbackForm/FormPieces/Supported';
 import Understanding from '../FeedbackForm/FormPieces/Understanding';
 import Success from '../Success/Success';
 import { AnimatePresence } from 'framer-motion';
+import { Container } from '@mui/material';
 
 
 
@@ -16,12 +17,13 @@ function App() {
   // Render form based on current route
   // "Next" buttons in the components move the user through the form
   return (
-    <div className="App">
+    <div className="App" >
       {/* Renders the header atop of all pages in the app */}
+      <Container maxWidth="lg">
       <Header />
-      <form >
+      <form>
         {/* All parts of the app form pages are wrapped in a router */}
-          <AnimatePresence exitBeforeEnter>
+          <AnimatePresence  exitBeforeEnter>
           <Switch location={location} key={location.pathname}>
             {/* Route for the starting, first question */}
             <Route path="/" exact>
@@ -50,6 +52,7 @@ function App() {
           </Switch>
           </AnimatePresence>
       </form>
+      </Container>
     </div>
   );
 }

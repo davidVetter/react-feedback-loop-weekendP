@@ -1,10 +1,11 @@
 import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import axios from 'axios';
-import { NavigateBefore, NavigateNext, DoneOutline, HistoryOutlined } from '@mui/icons-material';
-import { Button, ButtonGroup } from '@mui/material';
+import { NavigateBefore, DoneOutline } from '@mui/icons-material';
+import { Button, ButtonGroup, Paper, TextField } from '@mui/material';
 import { motion } from 'framer-motion';
-import pageTransition from '../../Animations/PageTransition';
+import pageTransitions from '../../Animations/PageTransitions';
+import pageTransitionForward from '../../Animations/PageVariantForward';
 // This is the review page of the application
 // This component will display the current feedback data that
 // the user has supplied in nice format with a button
@@ -79,13 +80,27 @@ function Review() {
         className="reviewFeedbackDiv"
         exit='out'
         animate='in'
-        initial='out'
-        variants={pageTransition}>
-        <h3>Review your feedback</h3>
+        initial='initial'
+        variants={pageTransitionForward}
+        transition={pageTransitions}
+        key={5}>
+        <Paper className="reviewPaper" elevation={8}>
+        <h3 className="questionHead">Review your feedback</h3>
         <p>Feelings: {feedback.feelings}</p>
         <p>Understanding: {feedback.understanding}</p>
         <p>Support: {feedback.supported}</p>
-        <p>Comments: {feedback.comments}</p>
+        <TextField
+                variant='outlined'
+                multiline
+                color='info'
+                label='Comments'
+                InputProps={{
+                    readOnly: true,
+                }}
+                sx={{mb: 1, mt: 0}}
+                value={feedback.comments} // binds value to state
+                type="text" />
+        <br />
         <ButtonGroup
           variant="contained"
           aria-label="outlined primary button group"
@@ -108,6 +123,7 @@ function Review() {
             Submit
           </Button>
         </ButtonGroup>
+        </Paper>
       </motion.div>
     );
 }

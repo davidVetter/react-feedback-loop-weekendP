@@ -1,12 +1,13 @@
 import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Button, ButtonGroup, Rating, Box } from '@mui/material';
+import { Button, ButtonGroup, Rating, Box, Paper } from '@mui/material';
 import { NavigateBefore, NavigateNext, Stars } from '@mui/icons-material';
 import getLabelText from './GetLabel';
 import labels from './Labels';
 import {motion} from 'framer-motion';
-import pageTransition from '../../Animations/PageTransition';
+import pageTransitions from '../../Animations/PageTransitions';
+import pageTransitionForward from '../../Animations/PageVariantForward';
 // This is the 2nd question of the form ('How is you Understanding?')
 function Understanding() {
     const [understanding, setUnderstanding] = useState('');
@@ -68,9 +69,12 @@ function Understanding() {
         className="understandingInputDiv"
         exit='out'
         animate='in'
-        initial='out'
-        variants={pageTransition}>
-        <h3>How well are you understanding the content?</h3>
+        initial='initial'
+        variants={pageTransitionForward}
+        transition={pageTransitions}
+        key={2}>
+        <Paper className='questionPaper' elevation={8}>
+        <h3 className="questionHead">How well are you understanding the content?</h3>
         <Box
           sx={{
             width: 600,
@@ -106,7 +110,10 @@ function Understanding() {
             </Box>
           )}
           {/* This component makes the buttons stay side by side nicely */}
-          <ButtonGroup variant='contained' aria-label="outlined primary button group">
+          <ButtonGroup 
+            variant='contained' 
+            aria-label="outlined primary button group"
+            sx={{mb: 2}}>
             <Button
                 variant='outlined' 
                 color='info'
@@ -124,8 +131,9 @@ function Understanding() {
             </Button>
           </ButtonGroup>
           {/* Below only renders if the user tried to use an invalid value */}
-          {notNumber && <p>Please select a rating! 🤔</p>}
+          {notNumber && <p className="pickMessage">Please select a rating! <span className="emojiBig">🤔</span></p>}
         </Box>
+        </Paper>
       </motion.div>
     );
 }

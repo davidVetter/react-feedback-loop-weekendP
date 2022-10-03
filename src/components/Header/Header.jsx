@@ -1,3 +1,4 @@
+import { Paper } from '@mui/material';
 import {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 // Header component that displays on all pages of the app
@@ -40,9 +41,11 @@ function Header() {
     }, [feedback, backBtn])
     // render the header with a message and emoji determined by current url
     return (
+        <Paper elevation={16} id="headerPaper">
         <header className='App-header'>
-            <h1 className='App-title'>{message} {emoji}</h1>
+            <h1 className='App-title'>{message} <span className="headerEmoji">{emoji}</span></h1>
         </header>
+        </Paper>
     )
 }
 

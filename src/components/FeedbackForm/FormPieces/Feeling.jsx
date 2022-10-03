@@ -1,10 +1,14 @@
 import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Button, Rating, Box } from '@mui/material';
+import { Button, Rating, Box, Paper } from '@mui/material';
 import { NavigateNext, Stars} from '@mui/icons-material';
+import { motion } from 'framer-motion';
 import getLabelText from './GetLabel';
 import labels from './Labels';
+import pageTransition from '../../Animations/PageVariantVert';
+import pageTransitions from '../../Animations/PageTransitions';
+
 // This is the 'How are you feeling' question component of
 // the feedback form (1st question/starting page of form)
 function Feeling() {
@@ -50,8 +54,16 @@ function Feeling() {
     // if the data is good, a message will render if a user
     // trys to move on with bad data in input
     return (
-      <div className="feelingInputDiv">
-        <h3>How are you feeling today?</h3>
+      <motion.div 
+        className="feelingInputDiv"
+        exit='out'
+        animate='in'
+        initial='initial'
+        variants={pageTransition}
+        transition={pageTransitions}
+        key={1}>
+        <Paper elevation={8}>
+        <h3 className="questionHead">How are you feeling today?</h3>
         {/* <label>Rate: 1-5<br />
                 <input
                     onChange={(e) => setFeeling(e.target.value)} // keeps state current with inputs value
@@ -96,13 +108,15 @@ function Feeling() {
           variant="contained"
           endIcon={<NavigateNext />}
           onClick={handleNext}
+          sx={{mb: 2}}
         >
           Next
         </Button>
         {/* Below only renders if the user tried to use an invalid value */}
-        {notNumber && <p>Please select a rating! 🤔</p>}
+        {notNumber && <p className="pickMessage" >Please select a rating! <span className="emojiBig">🤔</span></p>}
         </Box>
-      </div>
+      </Paper>
+      </motion.div>
     );
 }
 
