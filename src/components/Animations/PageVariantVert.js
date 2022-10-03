@@ -1,3 +1,5 @@
+// This determines some of the animations to be used during the transition
+// This makes the element move in a vertical fashion along the y-axis
 const pageTransition = {
     initial: {
         opacity: 0,

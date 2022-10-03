@@ -9,10 +9,10 @@ import pageTransitionForward from '../../Animations/PageVariantForward';
 
 // This is 4th and final question of the form (Any comments for us?)
 function Comments() {
-    const [comments, setComments] = useState('');
+    const [comments, setComments] = useState(''); // local state
     const dispatch = useDispatch();
     const history = useHistory();
-    const feedback = useSelector(store => store.feedback);
+    const feedback = useSelector(store => store.feedback); // feedback object stored in redux before POST to database
     // This conditional will check if understand store in redux already has
     // a value and will display that value in the input
     // This is used to populate the input if the user uses the back button
@@ -52,13 +52,13 @@ function Comments() {
     // application
      // A 'back' button will move the user to the previous question (supported)
     return (
-        <motion.div 
+        <motion.div // add transition to all children elements
             className='commentsInputDiv'
             exit='out'
             animate='in'
             initial='initial'
-            variants={pageTransitionForward}
-            transition={pageTransitions}
+            variants={pageTransitionForward} // controls in, out and intial states
+            transition={pageTransitions} // controls animation type
             key={4}>
         <Box sx={{ width: 'inherit' }}>
         <Paper elevation={8} sx={{ mt: 1 }}>

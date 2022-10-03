@@ -76,13 +76,13 @@ function Review() {
     // On submit button click, user is moved to success page
     // A 'back' button will move the user to the previous question (comments)
     return (
-      <motion.div 
+      <motion.div // add transition to all children elements
         className="reviewFeedbackDiv"
         exit='out'
         animate='in'
         initial='initial'
-        variants={pageTransitionForward}
-        transition={pageTransitions}
+        variants={pageTransitionForward} // controls in, out and intial states
+        transition={pageTransitions} // controls animation type
         key={5}>
         <Paper className="reviewPaper" elevation={8}>
         <h3 className="questionHead">Review your feedback</h3>
@@ -101,6 +101,7 @@ function Review() {
                 value={feedback.comments} // binds value to state
                 type="text" />
         <br />
+        {/* Keeps buttons aligned nicely in row */}
         <ButtonGroup
           variant="contained"
           aria-label="outlined primary button group"

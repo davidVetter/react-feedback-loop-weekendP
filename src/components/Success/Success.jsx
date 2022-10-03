@@ -25,13 +25,13 @@ function Success() {
     // Renders 2 div elements that contain some text to indicate
     // to user that the feedback has been added to our database
     return (
-        <motion.div 
+        <motion.div // add transition to all children elements
             className="successDiv"
             exit='out'
             animate='in'
             initial='initial'
-            variants={pageTransitionForward}
-            transition={pageTransitions}
+            variants={pageTransitionForward} // controls in, out and intial states
+            transition={pageTransitions} // controls animation type
             key={6}>
             <Paper elevation={8} className='questionPaper'>
             <div className="successMessage">
@@ -39,7 +39,14 @@ function Success() {
             </div>
             <div className="thxMessageBtnDiv">
                 <p>THANK YOU!</p>
-                <Button variant='contained' color='success' type='button' endIcon={<RestartAlt />} onClick={handleReset}>New Feedback</Button>
+                <Button 
+                    variant='contained' 
+                    color='success' 
+                    type='button' 
+                    endIcon={<RestartAlt />} 
+                    onClick={handleReset}>
+                    New Feedback
+                </Button>
             </div>
             </Paper>
         </motion.div>

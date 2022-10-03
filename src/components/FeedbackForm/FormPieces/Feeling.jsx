@@ -54,25 +54,16 @@ function Feeling() {
     // if the data is good, a message will render if a user
     // trys to move on with bad data in input
     return (
-      <motion.div 
+      <motion.div // add transition to all children elements
         className="feelingInputDiv"
         exit='out'
         animate='in'
         initial='initial'
-        variants={pageTransition}
-        transition={pageTransitions}
+        variants={pageTransition} // controls in, out and intial states
+        transition={pageTransitions} // controls animation type
         key={1}>
-        <Paper elevation={8}>
+        <Paper elevation={8}> 
         <h3 className="questionHead">How are you feeling today?</h3>
-        {/* <label>Rate: 1-5<br />
-                <input
-                    onChange={(e) => setFeeling(e.target.value)} // keeps state current with inputs value
-                    value={feeling} // binds value to state
-                    type="number" // restricts values to only numbers
-                    min={1} // set minimum number value that can in the input to 1
-                    //set maximum number value that can in the input to 5
-                    max={5} />
-            </label><br /> */}
         <Box
           sx={{
             width: 600,
@@ -83,6 +74,7 @@ function Feeling() {
         >
         {/* Render the user's current selection if they have made one previously */}
         {feeling && <h3>Current Selection: {feeling}</h3>}
+        {/* Star rating selector component */}
         <Rating
           name="hover-feedback"
           sx={{
@@ -93,14 +85,15 @@ function Feeling() {
           precision={1}
           getLabelText={getLabelText}
           onChange={(e, newValue) => {
-            setValue(newValue);
+            setValue(newValue); // update local states on star selection
             setFeeling(newValue);
           }}
           onChangeActive={(e, newHover) => {
-            setHover(newHover);
+            setHover(newHover); // allows value message to change as user hovers over stars
           }}
-          emptyIcon={<Stars style={{ opacity: 0.55 }} fontSize="inherit" />}
+          emptyIcon={<Stars style={{ opacity: 0.55 }} fontSize="inherit" />} // sets what the stars that aren't selected should look like
         />
+        {/* allows the default value to be displayed when user isn't hovering or the user hasn't previously selected a value */}
         {value !== null && (
          <Box sx={{ textAlign: 'center', mb: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>
         )}

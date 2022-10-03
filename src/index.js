@@ -22,6 +22,7 @@ const storeInstance = createStore(
 )
 
 // wrap app in provider, set redux store to be used
+// moved router out here so location worked properly for transitions
 ReactDOM.render(
     <Provider store={storeInstance}>
         <Router>

@@ -14,6 +14,7 @@ import AdminPage from '../AdminPage/AdminPage';
 
 
 function App() {
+  // This is used to let switch know when url is changing so page transitions work
   const location = useLocation();
   // Render form based on current route
   // "Next" buttons in the components move the user through the form
@@ -23,7 +24,7 @@ function App() {
       <Container maxWidth="lg">
       <Header />
       <form>
-        {/* All parts of the app form pages are wrapped in a router */}
+        {/* All parts of the app form pages are wrapped in AnimatePresence to page transitions */}
           <AnimatePresence  exitBeforeEnter>
           <Switch location={location} key={location.pathname}>
             {/* Route for the starting, first question */}
@@ -50,6 +51,7 @@ function App() {
             <Route path="/success">
               <Success />
             </Route>
+            {/* Route for the admin page with table of all feedback */}
             <Route path="/admin">
               <AdminPage />
             </Route>

@@ -10,12 +10,12 @@ import pageTransitions from '../../Animations/PageTransitions';
 import pageTransitionForward from '../../Animations/PageVariantForward';
 // This is the 2nd question of the form ('How is you Understanding?')
 function Understanding() {
-    const [understanding, setUnderstanding] = useState('');
-    const [notNumber, setNotNumber] = useState(false);
+    const [understanding, setUnderstanding] = useState(''); // local state for understanding input
+    const [notNumber, setNotNumber] = useState(false); // local state to display message if no number input
     const dispatch = useDispatch();
     const history = useHistory();
-    const feedback = useSelector(store => store.feedback);
-    const [value, setValue] = useState(3);
+    const feedback = useSelector(store => store.feedback); // feedback store from redux
+    const [value, setValue] = useState(3); // local states for Star rating selector
     const [hover, setHover] = useState(-1);
     // This conditional will check if understand store in redux already has
     // a value and will display that value in the input
@@ -65,13 +65,13 @@ function Understanding() {
     // trys to move on with bad data in input
     // A 'back' button will move the user to the previous question (feeling)
     return (
-      <motion.div 
+      <motion.div // add transition to all children elements
         className="understandingInputDiv"
         exit='out'
         animate='in'
         initial='initial'
-        variants={pageTransitionForward}
-        transition={pageTransitions}
+        variants={pageTransitionForward} // controls in, out and intial states
+        transition={pageTransitions} // controls animation type
         key={2}>
         <Paper  elevation={8} >
         <h3 className="questionHead">How well are you understanding the content?</h3>

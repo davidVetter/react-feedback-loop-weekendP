@@ -1,3 +1,6 @@
+// This determines some of the animations to be used during the transition
+// This makes the element move in a horizontal fashion along the x-axis
+// from left to right
 const pageTransitionForward = {
     initial: {
         opacity: 0,

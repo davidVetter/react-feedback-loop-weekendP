@@ -65,13 +65,13 @@ function Supported() {
     // trys to move on with bad data in input
     // A 'back' button will move the user to the previous question (understanding)
     return (
-      <motion.div 
+      <motion.div // add transition to all children elements
         className="supportedInputDiv"
         exit='out'
         animate='in'
         initial='initial'
-        variants={pageTransitionForward}
-        transition={pageTransitions}
+        variants={pageTransitionForward} // controls in, out and intial states
+        transition={pageTransitions} // controls animation type
         key={3}>
         <Paper elevation={8} >
         <h3 className="questionHead">How well are you being supported?</h3>

@@ -15,7 +15,7 @@ function AdminPage() {
     // The data returned is then store in redux store 'admin'
     const getAllFeedback = () => {
          axios.get('/feedback').then((response) => {
-            dispatch({
+            dispatch({ // After GET is finished, sends returned data to redux as payload
                 type: 'SET_FEEDBACK',
                 payload: response.data
             })
@@ -27,8 +27,10 @@ function AdminPage() {
     return (
         <div className='adminDiv'>
             <h2>Admin Page</h2>
-            <table className="adminTable">
+            {/* Table to display the feedback in database */}
+            <table className="adminTable"> 
                 <thead>
+                    {/* Heading row */}
                     <tr>
                         <th>Feel</th>
                         <th>Understand</th>
@@ -37,7 +39,9 @@ function AdminPage() {
                         <th>Date</th>
                     </tr>
                 </thead>
+                {/* Table body */}
                 <tbody>
+                    {/* function to create a row for each element in the admin array */}
                     {admin.map((feedback) => {
                         console.log('This is feedback: ', feedback);
                         return(
