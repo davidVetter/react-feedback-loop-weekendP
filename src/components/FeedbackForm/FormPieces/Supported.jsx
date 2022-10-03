@@ -73,13 +73,14 @@ function Supported() {
         variants={pageTransitionForward}
         transition={pageTransitions}
         key={3}>
-        <Paper elevation={8} className='questionPaper'>
+        <Paper elevation={8} >
         <h3 className="questionHead">How well are you being supported?</h3>
         <Box
           sx={{
             width: 600,
             display: "flex",
             flexDirection: "column",
+            justifyContent: 'center',
             alignItems: "center",
           }}
         >

@@ -73,13 +73,14 @@ function Understanding() {
         variants={pageTransitionForward}
         transition={pageTransitions}
         key={2}>
-        <Paper className='questionPaper' elevation={8}>
+        <Paper  elevation={8} >
         <h3 className="questionHead">How well are you understanding the content?</h3>
         <Box
           sx={{
             width: 600,
             display: "flex",
             flexDirection: "column",
+            justifyContent: 'center',
             alignItems: "center",
           }}
         >
@@ -113,7 +114,7 @@ function Understanding() {
           <ButtonGroup 
             variant='contained' 
             aria-label="outlined primary button group"
-            sx={{mb: 2}}>
+            sx={{ mb: 2 }}>
             <Button
                 variant='outlined' 
                 color='info'
