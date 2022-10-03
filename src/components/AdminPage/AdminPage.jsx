@@ -23,6 +23,34 @@ function AdminPage() {
             console.log('Error on GET', err);
          });
     }
+    // This function will perform a DELETE to the server and
+    // remove the feedback with the matching id that is passed as params in the url
+    const deleteFeedback = (id) => {
+      swal({
+        title: "Remove Feedback?",
+        text: "Are you sure you want to remove this feedback?",
+        buttons: {
+          cancel: true,
+          confirm: {
+            text: "Remove",
+            className: "redBtn",
+          },
+        },
+      }).then((result) => {
+        if (result) {
+          axios({
+            method: "DELETE",
+            url: `/feedback/delete/${id}`,
+          })
+            .then(() => {
+              getAllFeedback();
+            })
+            .catch((err) => {
+              console.log("Error in DELETE: ", err);
+            });
+        }
+      });
+    };
     // Render a table poplulated with the data returned from the database
     return (
         <div className='adminDiv'>
@@ -51,6 +79,7 @@ function AdminPage() {
                                 <td>{feedback.support}</td>
                                 <td>{feedback.comments}</td>
                                 <td>{feedback.date}</td>
+                                <td><button onClick={() => {deleteFeedback(feedback.id)}}>Delete</button></td>
                             </tr>
                         )
                     })}
