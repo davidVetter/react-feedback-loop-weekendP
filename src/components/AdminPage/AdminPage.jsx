@@ -52,7 +52,25 @@ function AdminPage() {
         }
       });
     };
-    
+
+    const flagFeedback = (id) => {
+        axios({
+            method: "PUT",
+            url: `/feedback/flag/${id}`
+        })
+        .then(() => {
+            getAllFeedback();
+        })
+        .catch((err) => {
+            console.log('Error in PUT: ', err);
+        });
+    };
+
+    function formatDate(dateDirty) {
+        let niceDate = new Date(dateDirty);
+        return niceDate.toLocaleDateString();
+    }
+
     // Render a table poplulated with the data returned from the database
     return (
         <div className='adminDiv'>
@@ -67,6 +85,8 @@ function AdminPage() {
                         <th>Support</th>
                         <th>Comments</th>
                         <th>Date</th>
+                        <th>Follow Up?</th>
+                        <th>Delete?</th>
                     </tr>
                 </thead>
                 {/* Table body */}
@@ -80,8 +100,9 @@ function AdminPage() {
                                 <td>{feedback.understanding}</td>
                                 <td>{feedback.support}</td>
                                 <td>{feedback.comments}</td>
-                                <td>{feedback.date}</td>
-                                <td><button onClick={() => {deleteFeedback(feedback.id)}}>Delete</button></td>
+                                <td>{formatDate(feedback.date)}</td>
+                                <td className="flagCell" onClick={() => {flagFeedback(feedback.id)}}>{feedback.flagged ? `✅`: `⭕`}</td>
+                                <td className="deleteCell" onClick={() => {deleteFeedback(feedback.id)}}>❌</td>
                             </tr>
                         )
                     })}

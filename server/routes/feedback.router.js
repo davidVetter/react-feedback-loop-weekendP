@@ -1,3 +1,4 @@
+const { Poll } = require('@mui/icons-material');
 const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
@@ -30,6 +31,20 @@ router.post('/', (req, res) => {
         })
         .catch((err) => {
             console.log('Error in POST: ', err);
+            res.sendStatus(500);
+        });
+});
+
+// This PUT will update if a feedback needs to be 'flagged' for follow up
+// It will change the 'flagged' column to the opposite of what it current is
+router.put('/flag/:id', (req, res) => {
+    const feedbackId = req.params.id;
+    console.log('This is params: ', req.params.id);
+    let query = `UPDATE "feedback" SET "flagged"=(NOT "flagged") WHERE id=$1;`;
+    pool.query(query, [feedbackId])
+        .then((response) => res.sendStatus(200))
+        .catch((err) => {
+            console.log('Error in UPDATE: ', err);
             res.sendStatus(500);
         });
 });

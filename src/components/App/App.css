@@ -99,3 +99,12 @@ td {
   width: 50vw;
   height: 25vh;
 }
+
+.flagCell {
+  cursor: pointer;
+}
+
+.deleteCell {
+  /* font-size: 2vw; */
+  cursor: pointer;
+}
