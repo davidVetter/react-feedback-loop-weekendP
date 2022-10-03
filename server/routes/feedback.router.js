@@ -34,4 +34,16 @@ router.post('/', (req, res) => {
         });
 });
 
+// This DELETE will remove a feedback entry from database
+router.delete('/delete/:id', (req, res) => {
+    const feedbackId = req.params.id;
+    const query = `DELETE FROM "feedback" WHERE "id"=$1;`;
+    pool.query(query, [feedbackId])
+        .then((response) => res.sendStatus(204))
+        .catch((error) => {
+            console.log('Error in DELETE by ID: ', error);
+            res.sendStatus(500);
+        });
+});
+
 module.exports = router;
