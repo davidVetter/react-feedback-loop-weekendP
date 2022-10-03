@@ -86,9 +86,9 @@ function Review() {
         key={5}>
         <Paper className="reviewPaper" elevation={8}>
         <h3 className="questionHead">Review your feedback</h3>
-        <p>Feelings: {feedback.feelings}</p>
-        <p>Understanding: {feedback.understanding}</p>
-        <p>Support: {feedback.supported}</p>
+        <p className='reviewP'>Feelings: {feedback.feelings}</p>
+        <p className='reviewP'>Understanding: {feedback.understanding}</p>
+        <p className='reviewP'>Support: {feedback.supported}</p>
         <TextField
                 variant='outlined'
                 multiline

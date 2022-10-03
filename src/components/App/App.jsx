@@ -9,6 +9,7 @@ import Understanding from '../FeedbackForm/FormPieces/Understanding';
 import Success from '../Success/Success';
 import { AnimatePresence } from 'framer-motion';
 import { Container } from '@mui/material';
+import AdminPage from '../AdminPage/AdminPage';
 
 
 
@@ -48,6 +49,9 @@ function App() {
             {/* Route for the feedback recieved success  */}
             <Route path="/success">
               <Success />
+            </Route>
+            <Route path="/admin">
+              <AdminPage />
             </Route>
           </Switch>
           </AnimatePresence>

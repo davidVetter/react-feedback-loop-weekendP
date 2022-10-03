@@ -9,12 +9,14 @@ import logger from 'redux-logger';
 import feedbackReducer from './redux/reducers/feedback.reducer';
 import backBtnReducer from './redux/reducers/backBtn.reducer';
 import {HashRouter as Router, Route, Switch, useLocation} from "react-router-dom";
+import adminFeedbackReducer from './redux/reducers/adminFeedback.reducer';
 
 // setup store to use
 const storeInstance = createStore(
     combineReducers({
         feedback: feedbackReducer,
-        backBtn: backBtnReducer
+        backBtn: backBtnReducer,
+        admin: adminFeedbackReducer
     }),
     applyMiddleware(logger)
 )
