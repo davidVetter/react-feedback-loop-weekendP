@@ -90,7 +90,8 @@ function Understanding() {
             name="hover-feedback"
             sx={{
                 color: 'info.main',
-                mb: 1
+                mb: 1,
+                fontSize: '2.5vw'
               }}
             value={value}
             precision={1}
@@ -106,7 +107,7 @@ function Understanding() {
           />
           {value !== null && (
             // This box contains the display text for star selection
-            <Box sx={{ textAlign: "center", mb: 2 }}> 
+            <Box sx={{ textAlign: "center", mb: 2, fontSize: '1.5vw' }}> 
               {labels[hover !== -1 ? hover : value]}
             </Box>
           )}

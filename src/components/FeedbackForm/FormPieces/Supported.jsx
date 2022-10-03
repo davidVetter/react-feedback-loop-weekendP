@@ -106,7 +106,7 @@ function Supported() {
             emptyIcon={<Stars style={{ opacity: 0.55 }} fontSize="inherit" />}
           />
           {value !== null && (
-            <Box sx={{ textAlign: "center", mb: 2, fontSize: '1.3vw' }}>
+            <Box sx={{ textAlign: "center", mb: 2, fontSize: '1.5vw' }}>
               {labels[hover !== -1 ? hover : value]}
             </Box>
           )}
