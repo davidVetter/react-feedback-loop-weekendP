@@ -2,7 +2,11 @@ import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { NavigateBefore, NavigateNext } from '@mui/icons-material';
-import { Button, ButtonGroup, TextField } from '@mui/material';
+import { Button, ButtonGroup, TextField, Paper, Box } from '@mui/material';
+import { motion } from 'framer-motion';
+import pageTransitions from '../../Animations/PageTransitions';
+import pageTransitionForward from '../../Animations/PageVariantForward';
+
 // This is 4th and final question of the form (Any comments for us?)
 function Comments() {
     const [comments, setComments] = useState('');
@@ -48,8 +52,17 @@ function Comments() {
     // application
      // A 'back' button will move the user to the previous question (supported)
     return (
-        <div className='commentsInputDiv'>
-        <h3>Any comments you want to leave?</h3>
+        <motion.div 
+            className='commentsInputDiv'
+            exit='out'
+            animate='in'
+            initial='initial'
+            variants={pageTransitionForward}
+            transition={pageTransitions}
+            key={4}>
+        <Box sx={{ width: 'inherit' }}>
+        <Paper elevation={8} sx={{ mt: 1 }}>
+        <h3 style={{paddingTop: '1%'}} className="questionHead">Any comments you want to leave?</h3>
             <TextField
                 variant='filled'
                 multiline
@@ -63,11 +76,14 @@ function Comments() {
         <ButtonGroup
             variant="contained"
             aria-label="outlined primary button group"
+            sx={{ mb: 2 }}
         >
         <Button variant='outlined' color='info' startIcon={<NavigateBefore />} onClick={handleBack}>Prev</Button>
         <Button variant='contained' endIcon={<NavigateNext />} onClick={handleNext}>Next</Button>
         </ButtonGroup>
-        </div>
+        </Paper>
+        </Box>
+        </motion.div>
     )
 }
 

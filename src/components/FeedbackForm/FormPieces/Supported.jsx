@@ -2,9 +2,13 @@ import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { NavigateBefore, NavigateNext, Stars } from '@mui/icons-material';
-import { Button, ButtonGroup, Rating, Box } from '@mui/material';
+import { Button, ButtonGroup, Rating, Box, Paper } from '@mui/material';
+import { motion } from 'framer-motion';
 import getLabelText from './GetLabel';
 import labels from './Labels';
+import pageTransitions from '../../Animations/PageTransitions';
+import pageTransitionForward from '../../Animations/PageVariantForward';
+
 // This is the 3rd question of the form ('How supported do you feel?')
 function Supported() {
     const [support, setSupport] = useState('');
@@ -61,8 +65,16 @@ function Supported() {
     // trys to move on with bad data in input
     // A 'back' button will move the user to the previous question (understanding)
     return (
-      <div className="supportedInputDiv">
-        <h3>How well are you being supported?</h3>
+      <motion.div 
+        className="supportedInputDiv"
+        exit='out'
+        animate='in'
+        initial='initial'
+        variants={pageTransitionForward}
+        transition={pageTransitions}
+        key={3}>
+        <Paper elevation={8} className='questionPaper'>
+        <h3 className="questionHead">How well are you being supported?</h3>
         <Box
           sx={{
             width: 600,
@@ -100,6 +112,7 @@ function Supported() {
           <ButtonGroup
             variant="contained"
             aria-label="outlined primary button group"
+            sx={{ mb: 2 }}
           >
             <Button
               variant='outlined' 
@@ -118,9 +131,10 @@ function Supported() {
             </Button>
           </ButtonGroup>
           {/* Below only renders if the user tried to use an invalid value */}
-          {notNumber && <p>Please select a rating! 🤔</p>}
+          {notNumber && <p className="pickMessage" >Please select a rating! <span className="emojiBig">🤔</span></p>}
         </Box>
-      </div>
+        </Paper>
+      </motion.div>
     );
 }
 
