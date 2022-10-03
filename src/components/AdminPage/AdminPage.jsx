@@ -25,8 +25,9 @@ function AdminPage() {
     }
     // This function will perform a DELETE to the server and
     // remove the feedback with the matching id that is passed as params in the url
+    // Uses "sweet alerts" alert to add a nice confirmation button when trying to delete a feedback entry
     const deleteFeedback = (id) => {
-      swal({
+      swal({ // Sweet alert for delete confirmation
         title: "Remove Feedback?",
         text: "Are you sure you want to remove this feedback?",
         buttons: {
@@ -38,7 +39,7 @@ function AdminPage() {
         },
       }).then((result) => {
         if (result) {
-          axios({
+          axios({ // performs DELETE to server
             method: "DELETE",
             url: `/feedback/delete/${id}`,
           })
@@ -51,6 +52,7 @@ function AdminPage() {
         }
       });
     };
+    
     // Render a table poplulated with the data returned from the database
     return (
         <div className='adminDiv'>
