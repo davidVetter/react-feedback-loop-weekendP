@@ -6,7 +6,7 @@ _Duration: 25 Hours_
 
 This is an application that will collect feedback from users. The application has a form with 4 questions. The form is broken up into individual parts and the user is moved through the different questions as they answer each one. This is a single page application. Each question has a rating of stars between 1 and 5 for the user to select. Hovering a star will give show the associated text with that rating. Clicking a star will log the selected value and display it on the screen. Use the 'Next' buttons to move through each question. Using a 'Back' button will re-display the user's previous selection and also allow them to chose a different answer. User must select a rating to move on to the next page. If the user gets to the submit feedback information page with any of the values missing the user will get an alert and be taken back to that page to enter a rating. The comments page is the only optional question on the form. There is a review page for the user to confirm their information is correct before submitting. Upon submitting the user is a taken to a 'success' page and has the option via a button to start over and submit more feedback. This application is connected to a database so feedback is stored. There is an admin page that displays all the feeback stored in the database in a table.
 
-<!-- To see the fully functional site, please visit: [DEPLOYED VERSION OF APP](www.heroku.com) -->
+To see the fully functional site, please visit: [DEPLOYED VERSION OF APP](https://sleepy-tor-30450.herokuapp.com/#/)
 
 ## Screen Shot
 
