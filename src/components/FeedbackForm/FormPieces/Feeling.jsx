@@ -96,7 +96,7 @@ function Feeling() {
         />
         {/* allows the default value to be displayed when user isn't hovering or the user hasn't previously selected a value */}
         {value !== null && (
-         <Box sx={{ textAlign: 'center', mb: 2, fontSize: '1.5vw' }}>{labels[hover !== -1 ? hover : value]}</Box>
+         <Box sx={{ textAlign: 'center', mb: 2, fontSize: '1.5vw', fontFamily: 'Basillion' }}>{labels[hover !== -1 ? hover : value]}</Box>
         )}
         <Button
           variant="contained"

@@ -107,7 +107,7 @@ function Understanding() {
           />
           {value !== null && (
             // This box contains the display text for star selection
-            <Box sx={{ textAlign: "center", mb: 2, fontSize: '1.5vw' }}> 
+            <Box sx={{ textAlign: "center", mb: 2, fontSize: '1.5vw', fontFamily: 'Basillion' }}> 
               {labels[hover !== -1 ? hover : value]}
             </Box>
           )}

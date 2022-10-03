@@ -97,6 +97,7 @@ function Review() {
                 InputProps={{
                     readOnly: true,
                 }}
+                disabled
                 sx={{mb: 1, mt: 0}}
                 value={feedback.comments} // binds value to state
                 type="text" />

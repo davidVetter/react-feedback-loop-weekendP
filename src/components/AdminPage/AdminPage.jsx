@@ -95,7 +95,7 @@ function AdminPage() {
                     {admin.map((feedback) => {
                         console.log('This is feedback: ', feedback);
                         return(
-                            <tr key={feedback.id}>
+                            <tr key={feedback.id} className="adminTableRows">
                                 <td>{feedback.feeling}</td>
                                 <td>{feedback.understanding}</td>
                                 <td>{feedback.support}</td>

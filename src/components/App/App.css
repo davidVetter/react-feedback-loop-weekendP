@@ -4,6 +4,7 @@ body {
 .App {
   text-align: center;
   background-color: #A29C9B;
+  font-family: 'Basillion', Arial, Helvetica, sans-serif;
 }
 
 .App-header {
@@ -11,6 +12,7 @@ body {
   min-height: 70px;
   padding: 20px;
   font-size: 1.3vw;
+  font-family: 'Force Runner Outline Italic', sans-serif;
   color: white;
   margin-bottom: 20px;
 }
@@ -33,6 +35,8 @@ h3 {
 
 .questionHead {
   font-size: 1.7vw;
+  font-family: 'Basillion', sans-serif;
+                                                
 }
 
 .adminDiv {
@@ -45,6 +49,13 @@ h3 {
 
 .adminTable {
   margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+}
+
+.adminTableRows:nth-child(odd) {
+  background-color: tan;
+  border-collapse: collapse;
 }
 
 td {
