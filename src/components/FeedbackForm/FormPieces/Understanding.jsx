@@ -85,7 +85,7 @@ function Understanding() {
           }}
         >
         {/* Render the user's current selection if they have made one previously */}
-        {understanding && <h3>Current Selection: {understanding}</h3>}
+        {understanding && <h3>Current Selection: {understanding} {understanding < 3 ? '👎':'👍'}</h3>}
           <Rating
             name="hover-feedback"
             sx={{

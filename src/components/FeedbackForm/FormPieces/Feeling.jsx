@@ -73,7 +73,7 @@ function Feeling() {
           }}
         >
         {/* Render the user's current selection if they have made one previously */}
-        {feeling && <h3>Current Selection: {feeling}</h3>}
+        {feeling && <h3>Current Selection: {feeling} {feeling < 3 ? '👎':'👍'}</h3>}
         {/* Star rating selector component */}
         <Rating
           name="hover-feedback"

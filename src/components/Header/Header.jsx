@@ -19,6 +19,8 @@ function Header() {
     // It updates the 2 local states which trigger a re-render of the header
     useEffect(() => {
         console.log('this is path: ', path);
+        console.log('this is feedback.understanding: ', feedback.understanding);
+        console.log('this is backBtn: ', backBtn);
         if (path[1] === '/success') {
             setEmoji('🎉');
             setMessage(`We value your feedback!`);
@@ -26,7 +28,7 @@ function Header() {
             setEmoji('🌡');
             setMessage(`Let's hear how things are going!`);   
         }else if (path[1] === '/understanding') {
-            setEmoji('👍');
+            setEmoji('💪');
             setMessage(`Do you have a handle on the current material?`);
         } else if (path[1] === '/supported') {
             setEmoji('🤲');
@@ -45,9 +47,9 @@ function Header() {
     // render the header with a message and emoji determined by current url
     return (
         <Paper elevation={16} id="headerPaper">
-        <header className='App-header'>
-            <h1 className='App-title'>{message} <span className="headerEmoji">{emoji}</span></h1>
-        </header>
+            <header className='App-header'>
+                <h1 className='App-title'>{message} <span className="headerEmoji">{emoji}</span></h1>
+            </header>
         </Paper>
     )
 }

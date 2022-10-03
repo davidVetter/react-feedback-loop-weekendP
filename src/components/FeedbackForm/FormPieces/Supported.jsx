@@ -85,12 +85,13 @@ function Supported() {
           }}
         >
           {/* Render the user's current selection if they have made one previously */}
-          {support && <h3>Current Selection: {support}</h3>}
+          {support && <h3>Current Selection: {support} {support < 3 ? '👎':'👍'}</h3>}
           <Rating
             name="hover-feedback"
             sx={{
                 color: 'info.main',
-                mb: 1
+                mb: 1,
+                fontSize: '2.5vw'
               }}
             value={value}
             precision={1}
@@ -105,7 +106,7 @@ function Supported() {
             emptyIcon={<Stars style={{ opacity: 0.55 }} fontSize="inherit" />}
           />
           {value !== null && (
-            <Box sx={{ textAlign: "center", mb: 2 }}>
+            <Box sx={{ textAlign: "center", mb: 2, fontSize: '1.3vw' }}>
               {labels[hover !== -1 ? hover : value]}
             </Box>
           )}
