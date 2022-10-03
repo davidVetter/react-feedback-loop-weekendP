@@ -10,10 +10,11 @@ This is an application that will collect feedback from users. The application ha
 
 ## Screen Shot
 
-<img src='./public/images/Screen Shot 2022-10-02 at 10.45.40 PM.jpg'>
-<img src='./public/images/Screen Shot 2022-10-02 at 10.46.15 PM.jpg'>
-<img src='./public/images/Screen Shot 2022-10-02 at 10.46.48 PM.jpg'>
-<img src='./public/images/Screen Shot 2022-10-02 at 10.46.59 PM.jpg'>
+<img src='./public/images/Screen Shot 2022-10-03 at 8.18.35 AM.jpg'>
+<img src='./public/images/Screen Shot 2022-10-03 at 8.14.34 AM.jpg'>
+<img src='./public/images/Screen Shot 2022-10-03 at 8.14.52 AM.jpg'>
+<img src='./public/images/Screen Shot 2022-10-03 at 8.15.19 AM.jpg'>
+<img src='./public/images/Screen Shot 2022-10-03 at 8.19.55 AM.jpg'>
 
 ### Prerequisites
 
@@ -57,6 +58,7 @@ Link to software that is required to install the app (e.g. node).
  - Git
  - GitHub
  - VScode
+ - Sweet Alerts
  - Material UI
  - Framer Motion
  - Emotion
