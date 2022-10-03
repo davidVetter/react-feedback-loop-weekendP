@@ -1,7 +1,9 @@
+body {
+  background-color: #A29C9B;
+}
 .App {
   text-align: center;
   background-color: #A29C9B;
-  height: 100vh;
 }
 
 .App-header {
@@ -31,6 +33,25 @@ h3 {
 
 .questionHead {
   font-size: 1.7vw;
+}
+
+.adminDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.adminTable {
+  margin: 0 auto;
+}
+
+td {
+  max-width: 400px;
+  width: 9vw;
+  word-wrap: break-word;
+  word-break: normal;
 }
 
 .feelingInputDiv, .understandingInputDiv, 

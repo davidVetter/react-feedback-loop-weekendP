@@ -37,6 +37,9 @@ function Header() {
         } else if (path[1] === '/comments') {
             setEmoji('📝');
             setMessage(`Suggestions, Comments?`);
+        } else if (path[1] === '/admin') {
+            setEmoji('📋');
+            setMessage(`Feedback Results`);
         }
     }, [feedback, backBtn])
     // render the header with a message and emoji determined by current url
